@@ -28,10 +28,11 @@ class OneToManyIssueTest {
         Supplier supplier1 = new Supplier("sup1", article);
         Supplier supplier2 = new Supplier("sup2", article);
 
-        Price price = new Price(BigDecimal.ONE, article);
+        Price price1 = new Price(BigDecimal.ONE, article);
+        Price price2 = new Price(BigDecimal.TEN, article);
 
         article.setSuppliers(List.of(supplier1, supplier2));
-        article.setPrices(List.of(price));
+        article.setPrices(List.of(price1, price2));
         articleRepo.save(article);
 
         // when
@@ -40,7 +41,7 @@ class OneToManyIssueTest {
         // then
         assertThat(res.getSuppliers()).hasSize(2);
         // Fails here
-        assertThat(res.getPrices()).hasSize(1);
+        assertThat(res.getPrices()).hasSize(2);
     }
 
 }
