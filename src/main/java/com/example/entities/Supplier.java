@@ -56,7 +56,7 @@ public class Supplier {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Supplier supplier = (Supplier) o;
-        return id.equals(supplier.id) && value.equals(supplier.value) && article.equals(supplier.article);
+        return Objects.equals(id, supplier.id) && value.equals(supplier.value) && article.equals(supplier.article);
     }
 
     @Override

@@ -57,7 +57,7 @@ public class Price {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Price price = (Price) o;
-        return id.equals(price.id) && value.equals(price.value) && article.equals(price.article);
+        return Objects.equals(id, price.id) && value.equals(price.value) && article.equals(price.article);
     }
 
     @Override

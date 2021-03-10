@@ -6,8 +6,8 @@ import io.micronaut.data.annotation.MappedEntity;
 import io.micronaut.data.annotation.Relation;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @MappedEntity("articles")
 public class Article {
@@ -20,10 +20,10 @@ public class Article {
     private String name;
 
     @Relation(value = Relation.Kind.ONE_TO_MANY, mappedBy = "article", cascade = Relation.Cascade.ALL)
-    private List<Price> prices;
+    private Set<Price> prices;
 
     @Relation(value = Relation.Kind.ONE_TO_MANY, mappedBy = "article", cascade = Relation.Cascade.ALL)
-    private List<Supplier> suppliers;
+    private Set<Supplier> suppliers;
 
     public Article(String name) {
         this.name = name;
@@ -45,19 +45,19 @@ public class Article {
         this.name = name;
     }
 
-    public List<Price> getPrices() {
+    public Set<Price> getPrices() {
         return prices;
     }
 
-    public void setPrices(List<Price> prices) {
+    public void setPrices(Set<Price> prices) {
         this.prices = prices;
     }
 
-    public List<Supplier> getSuppliers() {
+    public Set<Supplier> getSuppliers() {
         return suppliers;
     }
 
-    public void setSuppliers(List<Supplier> suppliers) {
+    public void setSuppliers(Set<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
 

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,8 +31,8 @@ class OneToManyIssueTest {
         Price price1 = new Price(BigDecimal.ONE, article);
         Price price2 = new Price(BigDecimal.TEN, article);
 
-        article.setSuppliers(List.of(supplier1, supplier2));
-        article.setPrices(List.of(price1, price2));
+        article.setSuppliers(Set.of(supplier1, supplier2));
+        article.setPrices(Set.of(price1, price2));
         articleRepo.save(article);
 
         // when
@@ -40,7 +40,6 @@ class OneToManyIssueTest {
 
         // then
         assertThat(res.getSuppliers()).hasSize(2);
-        // Fails here
         assertThat(res.getPrices()).hasSize(2);
     }
 
